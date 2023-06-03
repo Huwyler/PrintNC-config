@@ -1,0 +1,425 @@
+# components
+loadrt trivkins coordinates=XYZ 
+loadrt motmod servo_period_nsec=1000000 num_joints=3 
+#loadrt __servo-thread  (not loaded by loadrt, no args saved)
+loadrt hostmot2 
+loadrt hm2_rpspi config=" num_encoders=1 num_pwmgens=2 num_stepgens=10" 
+loadrt pid names=pid.x,pid.y,pid.z,pid.s 
+# pin aliases
+# param aliases
+alias param hm2_7c81.0.gpio.000.invert_output hm2_7c81.0.pwmgen.00.out0.invert_output
+alias param hm2_7c81.0.gpio.000.is_opendrain hm2_7c81.0.pwmgen.00.out0.is_opendrain
+alias param hm2_7c81.0.gpio.019.invert_output hm2_7c81.0.pwmgen.01.out0.invert_output
+alias param hm2_7c81.0.gpio.019.is_opendrain hm2_7c81.0.pwmgen.01.out0.is_opendrain
+alias param hm2_7c81.0.gpio.004.invert_output hm2_7c81.0.stepgen.00.direction.invert_output
+alias param hm2_7c81.0.gpio.004.is_opendrain hm2_7c81.0.stepgen.00.direction.is_opendrain
+alias param hm2_7c81.0.gpio.002.invert_output hm2_7c81.0.stepgen.00.step.invert_output
+alias param hm2_7c81.0.gpio.002.is_opendrain hm2_7c81.0.stepgen.00.step.is_opendrain
+alias param hm2_7c81.0.gpio.008.invert_output hm2_7c81.0.stepgen.01.direction.invert_output
+alias param hm2_7c81.0.gpio.008.is_opendrain hm2_7c81.0.stepgen.01.direction.is_opendrain
+alias param hm2_7c81.0.gpio.006.invert_output hm2_7c81.0.stepgen.01.step.invert_output
+alias param hm2_7c81.0.gpio.006.is_opendrain hm2_7c81.0.stepgen.01.step.is_opendrain
+alias param hm2_7c81.0.gpio.010.invert_output hm2_7c81.0.stepgen.02.direction.invert_output
+alias param hm2_7c81.0.gpio.010.is_opendrain hm2_7c81.0.stepgen.02.direction.is_opendrain
+alias param hm2_7c81.0.gpio.009.invert_output hm2_7c81.0.stepgen.02.step.invert_output
+alias param hm2_7c81.0.gpio.009.is_opendrain hm2_7c81.0.stepgen.02.step.is_opendrain
+alias param hm2_7c81.0.gpio.012.invert_output hm2_7c81.0.stepgen.03.direction.invert_output
+alias param hm2_7c81.0.gpio.012.is_opendrain hm2_7c81.0.stepgen.03.direction.is_opendrain
+alias param hm2_7c81.0.gpio.011.invert_output hm2_7c81.0.stepgen.03.step.invert_output
+alias param hm2_7c81.0.gpio.011.is_opendrain hm2_7c81.0.stepgen.03.step.is_opendrain
+alias param hm2_7c81.0.gpio.023.invert_output hm2_7c81.0.stepgen.04.direction.invert_output
+alias param hm2_7c81.0.gpio.023.is_opendrain hm2_7c81.0.stepgen.04.direction.is_opendrain
+alias param hm2_7c81.0.gpio.021.invert_output hm2_7c81.0.stepgen.04.step.invert_output
+alias param hm2_7c81.0.gpio.021.is_opendrain hm2_7c81.0.stepgen.04.step.is_opendrain
+alias param hm2_7c81.0.gpio.027.invert_output hm2_7c81.0.stepgen.05.direction.invert_output
+alias param hm2_7c81.0.gpio.027.is_opendrain hm2_7c81.0.stepgen.05.direction.is_opendrain
+alias param hm2_7c81.0.gpio.025.invert_output hm2_7c81.0.stepgen.05.step.invert_output
+alias param hm2_7c81.0.gpio.025.is_opendrain hm2_7c81.0.stepgen.05.step.is_opendrain
+alias param hm2_7c81.0.gpio.029.invert_output hm2_7c81.0.stepgen.06.direction.invert_output
+alias param hm2_7c81.0.gpio.029.is_opendrain hm2_7c81.0.stepgen.06.direction.is_opendrain
+alias param hm2_7c81.0.gpio.028.invert_output hm2_7c81.0.stepgen.06.step.invert_output
+alias param hm2_7c81.0.gpio.028.is_opendrain hm2_7c81.0.stepgen.06.step.is_opendrain
+alias param hm2_7c81.0.gpio.042.invert_output hm2_7c81.0.stepgen.07.direction.invert_output
+alias param hm2_7c81.0.gpio.042.is_opendrain hm2_7c81.0.stepgen.07.direction.is_opendrain
+alias param hm2_7c81.0.gpio.040.invert_output hm2_7c81.0.stepgen.07.step.invert_output
+alias param hm2_7c81.0.gpio.040.is_opendrain hm2_7c81.0.stepgen.07.step.is_opendrain
+alias param hm2_7c81.0.gpio.046.invert_output hm2_7c81.0.stepgen.08.direction.invert_output
+alias param hm2_7c81.0.gpio.046.is_opendrain hm2_7c81.0.stepgen.08.direction.is_opendrain
+alias param hm2_7c81.0.gpio.044.invert_output hm2_7c81.0.stepgen.08.step.invert_output
+alias param hm2_7c81.0.gpio.044.is_opendrain hm2_7c81.0.stepgen.08.step.is_opendrain
+alias param hm2_7c81.0.gpio.048.invert_output hm2_7c81.0.stepgen.09.direction.invert_output
+alias param hm2_7c81.0.gpio.048.is_opendrain hm2_7c81.0.stepgen.09.direction.is_opendrain
+alias param hm2_7c81.0.gpio.047.invert_output hm2_7c81.0.stepgen.09.step.invert_output
+alias param hm2_7c81.0.gpio.047.is_opendrain hm2_7c81.0.stepgen.09.step.is_opendrain
+# signals
+# nets
+net MDI-mode halui.mode.is-mdi
+net axis-select-x halui.axis.x.select
+net axis-select-y halui.axis.y.select
+net axis-select-z halui.axis.z.select
+net coolant-flood iocontrol.0.coolant-flood
+net coolant-mist iocontrol.0.coolant-mist
+net estop-out iocontrol.0.user-enable-out => iocontrol.0.emc-enable-in
+net in-position motion.in-position
+net jog-selected-neg halui.axis.selected.minus
+net jog-selected-pos halui.axis.selected.plus
+net jog-speed halui.axis.jog-speed
+net jog-x-analog halui.axis.x.analog
+net jog-x-neg halui.axis.x.minus
+net jog-x-pos halui.axis.x.plus
+net jog-y-analog halui.axis.y.analog
+net jog-y-neg halui.axis.y.minus
+net jog-y-pos halui.axis.y.plus
+net jog-z-analog halui.axis.z.analog
+net jog-z-neg halui.axis.z.minus
+net jog-z-pos halui.axis.z.plus
+net machine-is-enabled motion.motion-enabled
+net machine-is-on halui.machine.is-on
+net probe-in motion.probe-input
+net spindle-at-speed spindle.0.at-speed
+net spindle-brake spindle.0.brake
+net spindle-ccw spindle.0.reverse
+net spindle-cw spindle.0.forward
+net spindle-enable spindle.0.on => pid.s.enable
+net spindle-index-enable spindle.0.index-enable => pid.s.index-enable
+net spindle-manual-ccw halui.spindle.0.reverse
+net spindle-manual-cw halui.spindle.0.forward
+net spindle-manual-stop halui.spindle.0.stop
+net spindle-output pid.s.output
+net spindle-revs spindle.0.revs
+net spindle-vel-cmd-rpm spindle.0.speed-out => pid.s.command
+net spindle-vel-cmd-rpm-abs spindle.0.speed-out-abs
+net spindle-vel-cmd-rps spindle.0.speed-out-rps
+net spindle-vel-cmd-rps-abs spindle.0.speed-out-rps-abs
+net spindle-vel-fb-rpm pid.s.feedback
+net spindle-vel-fb-rps spindle.0.speed-in
+net tool-change-confirmed hal_manualtoolchange.changed => iocontrol.0.tool-changed
+net tool-change-request iocontrol.0.tool-change => hal_manualtoolchange.change
+net tool-number iocontrol.0.tool-prep-number => hal_manualtoolchange.number
+net tool-prepare-loopback iocontrol.0.tool-prepare => iocontrol.0.tool-prepared
+net x-enable joint.0.amp-enable-out => hm2_7c81.0.stepgen.05.enable pid.x.enable
+net x-home-sw joint.0.home-sw-in
+net x-index-enable pid.x.index-enable
+net x-is-homed halui.joint.0.is-homed
+net x-neg-limit joint.0.neg-lim-sw-in
+net x-output pid.x.output => hm2_7c81.0.stepgen.05.velocity-cmd
+net x-pos-cmd joint.0.motor-pos-cmd => pid.x.command
+net x-pos-fb hm2_7c81.0.stepgen.05.position-fb => joint.0.motor-pos-fb pid.x.feedback
+net x-pos-limit joint.0.pos-lim-sw-in
+net x-vel-cmd joint.0.vel-cmd
+net y-enable joint.1.amp-enable-out => hm2_7c81.0.stepgen.09.enable pid.y.enable
+net y-home-sw joint.1.home-sw-in
+net y-index-enable pid.y.index-enable
+net y-is-homed halui.joint.1.is-homed
+net y-neg-limit joint.1.neg-lim-sw-in
+net y-output pid.y.output => hm2_7c81.0.stepgen.09.velocity-cmd
+net y-pos-cmd joint.1.motor-pos-cmd => pid.y.command
+net y-pos-fb hm2_7c81.0.stepgen.09.position-fb => joint.1.motor-pos-fb pid.y.feedback
+net y-pos-limit joint.1.pos-lim-sw-in
+net y-vel-cmd joint.1.vel-cmd
+net z-enable joint.2.amp-enable-out => hm2_7c81.0.stepgen.07.enable pid.z.enable
+net z-home-sw joint.2.home-sw-in
+net z-index-enable pid.z.index-enable
+net z-is-homed halui.joint.2.is-homed
+net z-neg-limit joint.2.neg-lim-sw-in
+net z-output pid.z.output => hm2_7c81.0.stepgen.07.velocity-cmd
+net z-pos-cmd joint.2.motor-pos-cmd => pid.z.command
+net z-pos-fb hm2_7c81.0.stepgen.07.position-fb => joint.2.motor-pos-fb pid.z.feedback
+net z-pos-limit joint.2.pos-lim-sw-in
+net z-vel-cmd joint.2.vel-cmd
+# parameter values
+setp hm2_7c81.0.encoder.00.counter-mode        FALSE
+setp hm2_7c81.0.encoder.00.filter         TRUE
+setp hm2_7c81.0.encoder.00.index-invert        FALSE
+setp hm2_7c81.0.encoder.00.index-mask        FALSE
+setp hm2_7c81.0.encoder.00.index-mask-invert        FALSE
+setp hm2_7c81.0.encoder.00.scale            1
+setp hm2_7c81.0.encoder.00.vel-timeout          0.5
+setp hm2_7c81.0.gpio.001.invert_output        FALSE
+setp hm2_7c81.0.gpio.001.is_opendrain        FALSE
+setp hm2_7c81.0.gpio.001.is_output        FALSE
+setp hm2_7c81.0.gpio.003.invert_output        FALSE
+setp hm2_7c81.0.gpio.003.is_opendrain        FALSE
+setp hm2_7c81.0.gpio.003.is_output        FALSE
+setp hm2_7c81.0.gpio.005.invert_output        FALSE
+setp hm2_7c81.0.gpio.005.is_opendrain        FALSE
+setp hm2_7c81.0.gpio.005.is_output        FALSE
+setp hm2_7c81.0.gpio.007.invert_output        FALSE
+setp hm2_7c81.0.gpio.007.is_opendrain        FALSE
+setp hm2_7c81.0.gpio.007.is_output        FALSE
+setp hm2_7c81.0.gpio.013.invert_output        FALSE
+setp hm2_7c81.0.gpio.013.is_opendrain        FALSE
+setp hm2_7c81.0.gpio.013.is_output        FALSE
+setp hm2_7c81.0.gpio.017.invert_output        FALSE
+setp hm2_7c81.0.gpio.017.is_opendrain        FALSE
+setp hm2_7c81.0.gpio.017.is_output        FALSE
+setp hm2_7c81.0.gpio.018.invert_output        FALSE
+setp hm2_7c81.0.gpio.018.is_opendrain        FALSE
+setp hm2_7c81.0.gpio.018.is_output        FALSE
+setp hm2_7c81.0.gpio.020.invert_output        FALSE
+setp hm2_7c81.0.gpio.020.is_opendrain        FALSE
+setp hm2_7c81.0.gpio.020.is_output        FALSE
+setp hm2_7c81.0.gpio.022.invert_output        FALSE
+setp hm2_7c81.0.gpio.022.is_opendrain        FALSE
+setp hm2_7c81.0.gpio.022.is_output        FALSE
+setp hm2_7c81.0.gpio.024.invert_output        FALSE
+setp hm2_7c81.0.gpio.024.is_opendrain        FALSE
+setp hm2_7c81.0.gpio.024.is_output        FALSE
+setp hm2_7c81.0.gpio.026.invert_output        FALSE
+setp hm2_7c81.0.gpio.026.is_opendrain        FALSE
+setp hm2_7c81.0.gpio.026.is_output        FALSE
+setp hm2_7c81.0.gpio.030.invert_output        FALSE
+setp hm2_7c81.0.gpio.030.is_opendrain        FALSE
+setp hm2_7c81.0.gpio.030.is_output        FALSE
+setp hm2_7c81.0.gpio.031.invert_output        FALSE
+setp hm2_7c81.0.gpio.031.is_opendrain        FALSE
+setp hm2_7c81.0.gpio.031.is_output        FALSE
+setp hm2_7c81.0.gpio.032.invert_output        FALSE
+setp hm2_7c81.0.gpio.032.is_opendrain        FALSE
+setp hm2_7c81.0.gpio.032.is_output        FALSE
+setp hm2_7c81.0.gpio.033.invert_output        FALSE
+setp hm2_7c81.0.gpio.033.is_opendrain        FALSE
+setp hm2_7c81.0.gpio.033.is_output        FALSE
+setp hm2_7c81.0.gpio.034.invert_output        FALSE
+setp hm2_7c81.0.gpio.034.is_opendrain        FALSE
+setp hm2_7c81.0.gpio.034.is_output        FALSE
+setp hm2_7c81.0.gpio.035.invert_output        FALSE
+setp hm2_7c81.0.gpio.035.is_opendrain        FALSE
+setp hm2_7c81.0.gpio.035.is_output        FALSE
+setp hm2_7c81.0.gpio.036.invert_output        FALSE
+setp hm2_7c81.0.gpio.036.is_opendrain        FALSE
+setp hm2_7c81.0.gpio.036.is_output        FALSE
+setp hm2_7c81.0.gpio.037.invert_output        FALSE
+setp hm2_7c81.0.gpio.037.is_opendrain        FALSE
+setp hm2_7c81.0.gpio.037.is_output        FALSE
+setp hm2_7c81.0.gpio.038.invert_output        FALSE
+setp hm2_7c81.0.gpio.038.is_opendrain        FALSE
+setp hm2_7c81.0.gpio.038.is_output        FALSE
+setp hm2_7c81.0.gpio.039.invert_output        FALSE
+setp hm2_7c81.0.gpio.039.is_opendrain        FALSE
+setp hm2_7c81.0.gpio.039.is_output        FALSE
+setp hm2_7c81.0.gpio.041.invert_output        FALSE
+setp hm2_7c81.0.gpio.041.is_opendrain        FALSE
+setp hm2_7c81.0.gpio.041.is_output        FALSE
+setp hm2_7c81.0.gpio.043.invert_output        FALSE
+setp hm2_7c81.0.gpio.043.is_opendrain        FALSE
+setp hm2_7c81.0.gpio.043.is_output        FALSE
+setp hm2_7c81.0.gpio.045.invert_output        FALSE
+setp hm2_7c81.0.gpio.045.is_opendrain        FALSE
+setp hm2_7c81.0.gpio.045.is_output        FALSE
+setp hm2_7c81.0.gpio.049.invert_output        FALSE
+setp hm2_7c81.0.gpio.049.is_opendrain        FALSE
+setp hm2_7c81.0.gpio.049.is_output        FALSE
+setp hm2_7c81.0.gpio.050.invert_output        FALSE
+setp hm2_7c81.0.gpio.050.is_opendrain        FALSE
+setp hm2_7c81.0.gpio.050.is_output        FALSE
+setp hm2_7c81.0.gpio.051.invert_output        FALSE
+setp hm2_7c81.0.gpio.051.is_opendrain        FALSE
+setp hm2_7c81.0.gpio.051.is_output        FALSE
+setp hm2_7c81.0.gpio.052.invert_output        FALSE
+setp hm2_7c81.0.gpio.052.is_opendrain        FALSE
+setp hm2_7c81.0.gpio.052.is_output        FALSE
+setp hm2_7c81.0.gpio.053.invert_output        FALSE
+setp hm2_7c81.0.gpio.053.is_opendrain        FALSE
+setp hm2_7c81.0.gpio.053.is_output        FALSE
+setp hm2_7c81.0.gpio.054.invert_output        FALSE
+setp hm2_7c81.0.gpio.054.is_opendrain        FALSE
+setp hm2_7c81.0.gpio.054.is_output        FALSE
+setp hm2_7c81.0.gpio.055.invert_output        FALSE
+setp hm2_7c81.0.gpio.055.is_opendrain        FALSE
+setp hm2_7c81.0.gpio.055.is_output        FALSE
+setp hm2_7c81.0.gpio.056.invert_output        FALSE
+setp hm2_7c81.0.gpio.056.is_opendrain        FALSE
+setp hm2_7c81.0.gpio.056.is_output        FALSE
+setp hm2_7c81.0.io_error        FALSE
+setp hm2_7c81.0.pwmgen.00.offset-mode        FALSE
+setp hm2_7c81.0.pwmgen.00.out0.invert_output        FALSE
+setp hm2_7c81.0.pwmgen.00.out0.is_opendrain        FALSE
+setp hm2_7c81.0.pwmgen.00.output-type            1
+setp hm2_7c81.0.pwmgen.00.scale            1
+setp hm2_7c81.0.pwmgen.01.offset-mode        FALSE
+setp hm2_7c81.0.pwmgen.01.out0.invert_output        FALSE
+setp hm2_7c81.0.pwmgen.01.out0.is_opendrain        FALSE
+setp hm2_7c81.0.pwmgen.01.output-type            1
+setp hm2_7c81.0.pwmgen.01.scale            1
+setp hm2_7c81.0.pwmgen.pdm_frequency   0x005B8D80
+setp hm2_7c81.0.pwmgen.pwm_frequency   0x00004E20
+setp hm2_7c81.0.read.tmax       309069
+setp hm2_7c81.0.stepgen.00.direction.invert_output        FALSE
+setp hm2_7c81.0.stepgen.00.direction.is_opendrain        FALSE
+setp hm2_7c81.0.stepgen.00.dirhold   0x00027FF6
+setp hm2_7c81.0.stepgen.00.dirsetup   0x00027FF6
+setp hm2_7c81.0.stepgen.00.maxaccel          600
+setp hm2_7c81.0.stepgen.00.maxvel     325.5208
+setp hm2_7c81.0.stepgen.00.position-scale         1000
+setp hm2_7c81.0.stepgen.00.step.invert_output        FALSE
+setp hm2_7c81.0.stepgen.00.step.is_opendrain        FALSE
+setp hm2_7c81.0.stepgen.00.step_type   0x00000000
+setp hm2_7c81.0.stepgen.00.steplen   0x00000600
+setp hm2_7c81.0.stepgen.00.stepspace   0x00000600
+setp hm2_7c81.0.stepgen.00.table-data-0   0x00000000
+setp hm2_7c81.0.stepgen.00.table-data-1   0x00000000
+setp hm2_7c81.0.stepgen.00.table-data-2   0x00000000
+setp hm2_7c81.0.stepgen.00.table-data-3   0x00000000
+setp hm2_7c81.0.stepgen.01.direction.invert_output        FALSE
+setp hm2_7c81.0.stepgen.01.direction.is_opendrain        FALSE
+setp hm2_7c81.0.stepgen.01.dirhold   0x00027FF6
+setp hm2_7c81.0.stepgen.01.dirsetup   0x00027FF6
+setp hm2_7c81.0.stepgen.01.maxaccel            1
+setp hm2_7c81.0.stepgen.01.maxvel            0
+setp hm2_7c81.0.stepgen.01.position-scale            1
+setp hm2_7c81.0.stepgen.01.step.invert_output        FALSE
+setp hm2_7c81.0.stepgen.01.step.is_opendrain        FALSE
+setp hm2_7c81.0.stepgen.01.step_type   0x00000000
+setp hm2_7c81.0.stepgen.01.steplen   0x00027FF6
+setp hm2_7c81.0.stepgen.01.stepspace   0x00027FF6
+setp hm2_7c81.0.stepgen.01.table-data-0   0x00000000
+setp hm2_7c81.0.stepgen.01.table-data-1   0x00000000
+setp hm2_7c81.0.stepgen.01.table-data-2   0x00000000
+setp hm2_7c81.0.stepgen.01.table-data-3   0x00000000
+setp hm2_7c81.0.stepgen.02.direction.invert_output        FALSE
+setp hm2_7c81.0.stepgen.02.direction.is_opendrain        FALSE
+setp hm2_7c81.0.stepgen.02.dirhold   0x00027FF6
+setp hm2_7c81.0.stepgen.02.dirsetup   0x00027FF6
+setp hm2_7c81.0.stepgen.02.maxaccel            1
+setp hm2_7c81.0.stepgen.02.maxvel            0
+setp hm2_7c81.0.stepgen.02.position-scale            1
+setp hm2_7c81.0.stepgen.02.step.invert_output        FALSE
+setp hm2_7c81.0.stepgen.02.step.is_opendrain        FALSE
+setp hm2_7c81.0.stepgen.02.step_type   0x00000000
+setp hm2_7c81.0.stepgen.02.steplen   0x00027FF6
+setp hm2_7c81.0.stepgen.02.stepspace   0x00027FF6
+setp hm2_7c81.0.stepgen.02.table-data-0   0x00000000
+setp hm2_7c81.0.stepgen.02.table-data-1   0x00000000
+setp hm2_7c81.0.stepgen.02.table-data-2   0x00000000
+setp hm2_7c81.0.stepgen.02.table-data-3   0x00000000
+setp hm2_7c81.0.stepgen.03.direction.invert_output        FALSE
+setp hm2_7c81.0.stepgen.03.direction.is_opendrain        FALSE
+setp hm2_7c81.0.stepgen.03.dirhold   0x00027FF6
+setp hm2_7c81.0.stepgen.03.dirsetup   0x00027FF6
+setp hm2_7c81.0.stepgen.03.maxaccel            1
+setp hm2_7c81.0.stepgen.03.maxvel            0
+setp hm2_7c81.0.stepgen.03.position-scale            1
+setp hm2_7c81.0.stepgen.03.step.invert_output        FALSE
+setp hm2_7c81.0.stepgen.03.step.is_opendrain        FALSE
+setp hm2_7c81.0.stepgen.03.step_type   0x00000000
+setp hm2_7c81.0.stepgen.03.steplen   0x00027FF6
+setp hm2_7c81.0.stepgen.03.stepspace   0x00027FF6
+setp hm2_7c81.0.stepgen.03.table-data-0   0x00000000
+setp hm2_7c81.0.stepgen.03.table-data-1   0x00000000
+setp hm2_7c81.0.stepgen.03.table-data-2   0x00000000
+setp hm2_7c81.0.stepgen.03.table-data-3   0x00000000
+setp hm2_7c81.0.stepgen.04.direction.invert_output        FALSE
+setp hm2_7c81.0.stepgen.04.direction.is_opendrain        FALSE
+setp hm2_7c81.0.stepgen.04.dirhold   0x00027FF6
+setp hm2_7c81.0.stepgen.04.dirsetup   0x00027FF6
+setp hm2_7c81.0.stepgen.04.maxaccel            1
+setp hm2_7c81.0.stepgen.04.maxvel            0
+setp hm2_7c81.0.stepgen.04.position-scale            1
+setp hm2_7c81.0.stepgen.04.step.invert_output        FALSE
+setp hm2_7c81.0.stepgen.04.step.is_opendrain        FALSE
+setp hm2_7c81.0.stepgen.04.step_type   0x00000000
+setp hm2_7c81.0.stepgen.04.steplen   0x00027FF6
+setp hm2_7c81.0.stepgen.04.stepspace   0x00027FF6
+setp hm2_7c81.0.stepgen.04.table-data-0   0x00000000
+setp hm2_7c81.0.stepgen.04.table-data-1   0x00000000
+setp hm2_7c81.0.stepgen.04.table-data-2   0x00000000
+setp hm2_7c81.0.stepgen.04.table-data-3   0x00000000
+setp hm2_7c81.0.stepgen.05.direction.invert_output        FALSE
+setp hm2_7c81.0.stepgen.05.direction.is_opendrain        FALSE
+setp hm2_7c81.0.stepgen.05.dirhold   0x00002710
+setp hm2_7c81.0.stepgen.05.dirsetup   0x00002710
+setp hm2_7c81.0.stepgen.05.maxaccel        937.5
+setp hm2_7c81.0.stepgen.05.maxvel        31.25
+setp hm2_7c81.0.stepgen.05.position-scale          200
+setp hm2_7c81.0.stepgen.05.step.invert_output        FALSE
+setp hm2_7c81.0.stepgen.05.step.is_opendrain        FALSE
+setp hm2_7c81.0.stepgen.05.step_type   0x00000000
+setp hm2_7c81.0.stepgen.05.steplen   0x00001388
+setp hm2_7c81.0.stepgen.05.stepspace   0x00001388
+setp hm2_7c81.0.stepgen.05.table-data-0   0x00000000
+setp hm2_7c81.0.stepgen.05.table-data-1   0x00000000
+setp hm2_7c81.0.stepgen.05.table-data-2   0x00000000
+setp hm2_7c81.0.stepgen.05.table-data-3   0x00000000
+setp hm2_7c81.0.stepgen.06.direction.invert_output        FALSE
+setp hm2_7c81.0.stepgen.06.direction.is_opendrain        FALSE
+setp hm2_7c81.0.stepgen.06.dirhold   0x00027FF6
+setp hm2_7c81.0.stepgen.06.dirsetup   0x00027FF6
+setp hm2_7c81.0.stepgen.06.maxaccel            1
+setp hm2_7c81.0.stepgen.06.maxvel            0
+setp hm2_7c81.0.stepgen.06.position-scale            1
+setp hm2_7c81.0.stepgen.06.step.invert_output        FALSE
+setp hm2_7c81.0.stepgen.06.step.is_opendrain        FALSE
+setp hm2_7c81.0.stepgen.06.step_type   0x00000000
+setp hm2_7c81.0.stepgen.06.steplen   0x00027FF6
+setp hm2_7c81.0.stepgen.06.stepspace   0x00027FF6
+setp hm2_7c81.0.stepgen.06.table-data-0   0x00000000
+setp hm2_7c81.0.stepgen.06.table-data-1   0x00000000
+setp hm2_7c81.0.stepgen.06.table-data-2   0x00000000
+setp hm2_7c81.0.stepgen.06.table-data-3   0x00000000
+setp hm2_7c81.0.stepgen.07.direction.invert_output        FALSE
+setp hm2_7c81.0.stepgen.07.direction.is_opendrain        FALSE
+setp hm2_7c81.0.stepgen.07.dirhold   0x00002710
+setp hm2_7c81.0.stepgen.07.dirsetup   0x00002710
+setp hm2_7c81.0.stepgen.07.maxaccel        937.5
+setp hm2_7c81.0.stepgen.07.maxvel        31.25
+setp hm2_7c81.0.stepgen.07.position-scale          200
+setp hm2_7c81.0.stepgen.07.step.invert_output        FALSE
+setp hm2_7c81.0.stepgen.07.step.is_opendrain        FALSE
+setp hm2_7c81.0.stepgen.07.step_type   0x00000000
+setp hm2_7c81.0.stepgen.07.steplen   0x00001388
+setp hm2_7c81.0.stepgen.07.stepspace   0x00001388
+setp hm2_7c81.0.stepgen.07.table-data-0   0x00000000
+setp hm2_7c81.0.stepgen.07.table-data-1   0x00000000
+setp hm2_7c81.0.stepgen.07.table-data-2   0x00000000
+setp hm2_7c81.0.stepgen.07.table-data-3   0x00000000
+setp hm2_7c81.0.stepgen.08.direction.invert_output        FALSE
+setp hm2_7c81.0.stepgen.08.direction.is_opendrain        FALSE
+setp hm2_7c81.0.stepgen.08.dirhold   0x00027FF6
+setp hm2_7c81.0.stepgen.08.dirsetup   0x00027FF6
+setp hm2_7c81.0.stepgen.08.maxaccel            1
+setp hm2_7c81.0.stepgen.08.maxvel            0
+setp hm2_7c81.0.stepgen.08.position-scale            1
+setp hm2_7c81.0.stepgen.08.step.invert_output        FALSE
+setp hm2_7c81.0.stepgen.08.step.is_opendrain        FALSE
+setp hm2_7c81.0.stepgen.08.step_type   0x00000000
+setp hm2_7c81.0.stepgen.08.steplen   0x00027FF6
+setp hm2_7c81.0.stepgen.08.stepspace   0x00027FF6
+setp hm2_7c81.0.stepgen.08.table-data-0   0x00000000
+setp hm2_7c81.0.stepgen.08.table-data-1   0x00000000
+setp hm2_7c81.0.stepgen.08.table-data-2   0x00000000
+setp hm2_7c81.0.stepgen.08.table-data-3   0x00000000
+setp hm2_7c81.0.stepgen.09.direction.invert_output        FALSE
+setp hm2_7c81.0.stepgen.09.direction.is_opendrain        FALSE
+setp hm2_7c81.0.stepgen.09.dirhold   0x00002710
+setp hm2_7c81.0.stepgen.09.dirsetup   0x00002710
+setp hm2_7c81.0.stepgen.09.maxaccel        937.5
+setp hm2_7c81.0.stepgen.09.maxvel        31.25
+setp hm2_7c81.0.stepgen.09.position-scale          200
+setp hm2_7c81.0.stepgen.09.step.invert_output        FALSE
+setp hm2_7c81.0.stepgen.09.step.is_opendrain        FALSE
+setp hm2_7c81.0.stepgen.09.step_type   0x00000000
+setp hm2_7c81.0.stepgen.09.steplen   0x00001388
+setp hm2_7c81.0.stepgen.09.stepspace   0x00001388
+setp hm2_7c81.0.stepgen.09.table-data-0   0x00000000
+setp hm2_7c81.0.stepgen.09.table-data-1   0x00000000
+setp hm2_7c81.0.stepgen.09.table-data-2   0x00000000
+setp hm2_7c81.0.stepgen.09.table-data-3   0x00000000
+setp hm2_7c81.0.watchdog.timeout_ns   0x004C4B40
+setp hm2_7c81.0.write.tmax       266811
+setp motion-command-handler.tmax        84073
+setp motion-controller.tmax       156109
+setp pid.s.do-pid-calcs.tmax        71814
+setp pid.x.do-pid-calcs.tmax        88054
+setp pid.y.do-pid-calcs.tmax        72554
+setp pid.z.do-pid-calcs.tmax        81776
+setp servo-thread.tmax       584418
+# realtime thread/function links
+addf hm2_7c81.0.read servo-thread
+addf motion-command-handler servo-thread
+addf motion-controller servo-thread
+addf pid.x.do-pid-calcs servo-thread
+addf pid.y.do-pid-calcs servo-thread
+addf pid.z.do-pid-calcs servo-thread
+addf pid.s.do-pid-calcs servo-thread
+addf hm2_7c81.0.write servo-thread

@@ -1,0 +1,162 @@
+Configuration Name: HOSTMOT2
+
+General configuration information:
+
+  BoardName : MESA7C81
+  FPGA Size: 9 KGates
+  FPGA Pins: 144
+  Number of IO Ports: 3
+  Width of one I/O port: 19
+  Clock Low frequency: 100.0000 MHz
+  Clock High frequency: 200.0000 MHz
+  IDROM Type: 3
+  Instance Stride 0: 4
+  Instance Stride 1: 64
+  Register Stride 0: 256
+  Register Stride 1: 256
+
+Modules in configuration:
+
+  Module: DPLL
+  There are 1 of DPLL in configuration
+  Version: 0
+  Registers: 7
+  BaseAddress: 7000
+  ClockFrequency: 100.000 MHz
+  Register Stride: 256 bytes
+  Instance Stride: 4 bytes
+
+  Module: WatchDog
+  There are 1 of WatchDog in configuration
+  Version: 0
+  Registers: 3
+  BaseAddress: 0C00
+  ClockFrequency: 100.000 MHz
+  Register Stride: 256 bytes
+  Instance Stride: 4 bytes
+
+  Module: IOPort
+  There are 3 of IOPort in configuration
+  Version: 0
+  Registers: 5
+  BaseAddress: 1000
+  ClockFrequency: 100.000 MHz
+  Register Stride: 256 bytes
+  Instance Stride: 4 bytes
+
+  Module: QCount
+  There are 1 of QCount in configuration
+  Version: 2
+  Registers: 5
+  BaseAddress: 3000
+  ClockFrequency: 100.000 MHz
+  Register Stride: 256 bytes
+  Instance Stride: 4 bytes
+
+  Module: SSerial
+  There are 1 of SSerial in configuration
+  Version: 0
+  Registers: 6
+  BaseAddress: 5B00
+  ClockFrequency: 100.000 MHz
+  Register Stride: 256 bytes
+  Instance Stride: 64 bytes
+
+  Module: StepGen
+  There are 10 of StepGen in configuration
+  Version: 2
+  Registers: 10
+  BaseAddress: 2000
+  ClockFrequency: 100.000 MHz
+  Register Stride: 256 bytes
+  Instance Stride: 4 bytes
+
+  Module: PWM
+  There are 3 of PWM in configuration
+  Version: 0
+  Registers: 5
+  BaseAddress: 4100
+  ClockFrequency: 200.000 MHz
+  Register Stride: 256 bytes
+  Instance Stride: 4 bytes
+
+  Module: LED
+  There are 1 of LED in configuration
+  Version: 0
+  Registers: 1
+  BaseAddress: 0200
+  ClockFrequency: 100.000 MHz
+  Register Stride: 256 bytes
+  Instance Stride: 4 bytes
+
+Configuration pin-out:
+
+IO Connections for P1+Serial -> 7C81_0
+Pin#                  I/O   Pri. func    Sec. func        Chan     Sec. Pin func   Sec. Pin Dir
+
+P1-01/DB25-01           0   IOPort       PWM              0        PWM             (Out)
+P1-02/DB25-14           1   IOPort       None           
+P1-03/DB25-02           2   IOPort       StepGen          0        Step/Table1     (Out)
+P1-04/DB25-15           3   IOPort       None           
+P1-05/DB25-03           4   IOPort       StepGen          0        Dir/Table2      (Out)
+P1-06/DB25-16           5   IOPort       None           
+P1-07/DB25-04           6   IOPort       StepGen          1        Step/Table1     (Out)
+P1-08/DB25-17           7   IOPort       None           
+P1-09/DB25-05           8   IOPort       StepGen          1        Dir/Table2      (Out)
+P1-11/DB25-06           9   IOPort       StepGen          2        Step/Table1     (Out)
+P1-13/DB25-07          10   IOPort       StepGen          2        Dir/Table2      (Out)
+P1-15/DB25-08          11   IOPort       StepGen          3        Step/Table1     (Out)
+P1-17/DB25-09          12   IOPort       StepGen          3        Dir/Table2      (Out)
+P1-19/DB25-10          13   IOPort       None           
+P1-21/DB25-11          14   IOPort       QCount           0        Quad-A          (In)
+P1-23/DB25-12          15   IOPort       QCount           0        Quad-B          (In)
+P1-25/DB25-13          16   IOPort       QCount           0        Quad-IDX        (In)
+P5 3,6                 17   IOPort       SSerial          0        TXData0         (Out)
+P6 3,6                 18   IOPort       SSerial          0        TXData1         (Out)
+
+IO Connections for P2+Serial -> 7C81_1
+Pin#                  I/O   Pri. func    Sec. func        Chan     Sec. Pin func   Sec. Pin Dir
+
+P2-01/DB25-01          19   IOPort       PWM              1        PWM             (Out)
+P2-02/DB25-14          20   IOPort       None           
+P2-03/DB25-02          21   IOPort       StepGen          4        Step/Table1     (Out)
+P2-04/DB25-15          22   IOPort       None           
+P2-05/DB25-03          23   IOPort       StepGen          4        Dir/Table2      (Out)
+P2-06/DB25-16          24   IOPort       None           
+P2-07/DB25-04          25   IOPort       StepGen          5        Step/Table1     (Out)
+P2-08/DB25-17          26   IOPort       None           
+P2-09/DB25-05          27   IOPort       StepGen          5        Dir/Table2      (Out)
+P2-11/DB25-06          28   IOPort       StepGen          6        Step/Table1     (Out)
+P2-13/DB25-07          29   IOPort       StepGen          6        Dir/Table2      (Out)
+P2-15/DB25-08          30   IOPort       None           
+P2-17/DB25-09          31   IOPort       None           
+P2-19/DB25-10          32   IOPort       None           
+P2-21/DB25-11          33   IOPort       None           
+P2-23/DB25-12          34   IOPort       None           
+P2-25/DB25-13          35   IOPort       None           
+P5 TXEN                36   IOPort       SSerial          0        TXEn0           (Out)
+P6 TXEN                37   IOPort       SSerial          0        TXEn1           (Out)
+
+IO Connections for P7+Serial -> 7C81_2
+Pin#                  I/O   Pri. func    Sec. func        Chan     Sec. Pin func   Sec. Pin Dir
+
+P7-01/DB25-01          38   IOPort       PWM              2        PWM             (Out)
+P7-02/DB25-14          39   IOPort       None           
+P7-03/DB25-02          40   IOPort       StepGen          7        Step/Table1     (Out)
+P7-04/DB25-15          41   IOPort       None           
+P7-05/DB25-03          42   IOPort       StepGen          7        Dir/Table2      (Out)
+P7-06/DB25-16          43   IOPort       None           
+P7-07/DB25-04          44   IOPort       StepGen          8        Step/Table1     (Out)
+P7-08/DB25-17          45   IOPort       None           
+P7-09/DB25-05          46   IOPort       StepGen          8        Dir/Table2      (Out)
+P7-11/DB25-06          47   IOPort       StepGen          9        Step/Table1     (Out)
+P7-13/DB25-07          48   IOPort       StepGen          9        Dir/Table2      (Out)
+P7-15/DB25-08          49   IOPort       None           
+P7-17/DB25-09          50   IOPort       None           
+P7-19/DB25-10          51   IOPort       None           
+P7-21/DB25-11          52   IOPort       None           
+P7-23/DB25-12          53   IOPort       None           
+P7-25/DB25-13          54   IOPort       None           
+P5 1,2                 55   IOPort       SSerial          0        RXData0         (In)
+P6 1,2                 56   IOPort       SSerial          0        RXData1         (In)
+
