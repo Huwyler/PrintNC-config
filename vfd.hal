@@ -1,0 +1,6 @@
+loadusr -W vfdmod  vfd_config.ini
+
+net spindle-cw => vfdmod.control.run-forward
+net spidnle-ccw => vfdmod.control.run-reverse
+net spindle-vel-cmd-rpm => vfdmod.spindle.rpm-in
+net spindle-at-speed <= vfdmod.spindle.at-speed

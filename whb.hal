@@ -102,11 +102,10 @@ net pdnt.axis.x.jog-enable                whb.axis.x.jog-enable                 
 net pdnt.axis.y.jog-enable                whb.axis.y.jog-enable                 axis.y.jog-enable
 net pdnt.axis.z.jog-enable                whb.axis.z.jog-enable                 axis.z.jog-enable
 
-#net pdnt.axis.x.jog-vel-mode              whb.axis.x.jog-vel-mode               axis.x.jog-vel-mode
-#net pdnt.axis.y.jog-vel-mode              whb.axis.y.jog-vel-mode               axis.y.jog-vel-mode
-#net pdnt.axis.z.jog-vel-mode              whb.axis.z.jog-vel-mode               axis.z.jog-vel-mode
+net pdnt.axis.x.jog-vel-mode              whb.axis.x.jog-vel-mode               axis.x.jog-vel-mode
+net pdnt.axis.y.jog-vel-mode              whb.axis.y.jog-vel-mode               axis.y.jog-vel-mode
+net pdnt.axis.z.jog-vel-mode              whb.axis.z.jog-vel-mode               axis.z.jog-vel-mode
 
-net x-control-type <= whb.axis.x.jog-vel-mode
 net machine.is-on halui.machine.is-on whb.halui.machine.is-on
 
 # macro buttons to MDI commands
