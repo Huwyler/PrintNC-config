@@ -15,12 +15,14 @@ loadrt pid names=pid.y,pid.z,pid.s
 loadrt mult2 names=mult2-jog-scale-x,mult2-jog-scale-y,mult2-jog-scale-z
 loadrt ilowpass names=ilowpass-x-jog,ilowpass-y-jog,ilowpass-z-jog
 loadrt mux2 names=mux2-jog-scale-x,mux2-jog-scale-y,mux2-jog-scale-z
+loadrt or2 names=or-probe
 
 addf hm2_7c81.0.read          servo-thread
 addf motion-command-handler   servo-thread
 addf motion-controller        servo-thread
 addf gantry.0.read 	      servo-thread
 addf gantry.0.write           servo-thread
+addf or-probe                 servo-thread
 
 #addf pid.x.do-pid-calcs       servo-thread
 addf pid.y.do-pid-calcs       servo-thread
@@ -322,8 +324,14 @@ net coolant-mist      <=  iocontrol.0.coolant-mist
 net coolant-flood     <=  iocontrol.0.coolant-flood
 
 #  ---probe signal---
+net 3d-probe  <=  hm2_7c81.0.gpio.032.in_not
+net 3d-probe => or-probe.in0
 
-net probe-in     =>  motion.probe-input
+net tool-probe <= hm2_7c81.0.gpio.030.in
+net tool-probe => or-probe.in1
+
+net probe     <= or-probe.out
+net probe     =>  motion.probe-input
 
 #  ---motion control signals---
 
@@ -340,8 +348,8 @@ net estop-out     =>  iocontrol.0.emc-enable-in
 #  ---manual tool change signals---
 
 loadusr -W hal_manualtoolchange
-net tool-change-request     iocontrol.0.tool-change       =>  hal_manualtoolchange.change
-net tool-change-confirmed   iocontrol.0.tool-changed      <=  hal_manualtoolchange.changed
-net tool-number             iocontrol.0.tool-prep-number  =>  hal_manualtoolchange.number
-net tool-prepare-loopback   iocontrol.0.tool-prepare      =>  iocontrol.0.tool-prepared
+#net tool-change-request     iocontrol.0.tool-change       =>  hal_manualtoolchange.change
+#net tool-change-confirmed   iocontrol.0.tool-changed      <=  hal_manualtoolchange.changed
+#net tool-number             iocontrol.0.tool-prep-number  =>  hal_manualtoolchange.number
+#net tool-prepare-loopback   iocontrol.0.tool-prepare      =>  iocontrol.0.tool-prepared
 
