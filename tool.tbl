@@ -1,5 +1,9 @@
 T0 P0 ; 
-T1 P1 Z-158.841499 ; 
-T2 P2 Z-19.209486 ; 
-T3 P3 Z-16.665200 ; 
-T4 P0 Z-18.319500 ;comment 
+T1 P1 Z-16.161165 ; 
+T2 P2 Z+9.422500 ; 
+T3 P3 Z-14.991491 ; 
+T4 P0 Z+5.843800 ;comment 
+T5 P0 Z-4.741200 ;comment 
+T6 P0 Z+1.273169 ;comment 
+T7 P0 ;comment 
+T8 P0 Z-14.514496 ;comment 
